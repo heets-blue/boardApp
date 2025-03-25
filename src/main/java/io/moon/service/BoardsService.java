@@ -3,6 +3,8 @@ package io.moon.service;
 import io.moon.model.Board;
 import io.moon.repository.BoardRepo;
 
+import java.util.HashMap;
+
 public class BoardsService {
 
     BoardRepo boardRepo;
@@ -15,6 +17,9 @@ public class BoardsService {
         return boardRepo.addBoard(title, description).getID();
     }
 
+    public boolean isEmptyBoards(){
+        return boardRepo.isEmptyBoards();
+    }
     public Board getBoardByName(String boardName){
         return boardRepo.getBoardByName(boardName);
     }
@@ -23,7 +28,16 @@ public class BoardsService {
         return boardRepo.getBoardById(boardID);
     }
 
+    public void viewBoard(Board board){
+        boardRepo.viewBoard(board);
+    }
 
+    public void listBoards(){
+        boardRepo.listBoards();
+    }
 
+    public void removeBoard(Board board){
+        boardRepo.removeBoard(board);
+    }
 
 }

@@ -1,10 +1,8 @@
 package io.moon.repository;
 
 import io.moon.model.Board;
-import io.moon.model.Post;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class BoardRepo {
     HashMap<Integer, Board> boards = new HashMap<>();
@@ -26,10 +24,32 @@ public class BoardRepo {
         return null;
     }
 
+    public boolean isEmptyBoards(){
+        return boards.isEmpty();
+    }
+
     public Board getBoardById(Integer boardID){
         return boards.get(boardID);
     }
 
+    public void viewBoard(Board board){
+        String details = String.format(
+        "게시판 ID : %d\n게시판 이름 : %s\n게시판 설명 : %s\n작성일 : %s\n",
+        board.getID(), board.getTitle(), board.getDescription(),
+                board.getCreatedDateTime());
 
+        System.out.println(details);
+    }
+
+    public void listBoards(){
+        for(Integer id : boards.keySet()){
+            Board board = boards.get(id);
+            viewBoard(board);
+        }
+    }
+
+    public void removeBoard(Board board){
+        boards.remove(board.getID());
+    }
 
 }

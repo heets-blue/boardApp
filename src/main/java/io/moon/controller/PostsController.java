@@ -4,7 +4,6 @@ import io.moon.model.Board;
 import io.moon.model.Post;
 import io.moon.service.BoardsService;
 import io.moon.service.PostService;
-import io.moon.system.Container;
 import io.moon.system.Request;
 
 import java.util.NoSuchElementException;
@@ -25,13 +24,13 @@ public class PostsController {
         try{
             switch (request.getFunction()){
                 case "add":
-                    boolean hasParams = request.hasParams("boardId");
+                    boolean hasParams = request.validParams("boardId");
                     if(!hasParams){
                         throw new IllegalArgumentException("파라미터 입력이 잘못되었습니다.");
                     }
 
-                    Integer tergetBoardId = request.paramsValueStringToInt("boardId");
-                    Board targetBoard = boardsService.getBoardById(tergetBoardId);
+                    Integer targetBoardId = request.paramsValueStringToInt("boardId");
+                    Board targetBoard = boardsService.getBoardById(targetBoardId);
                     if(targetBoard == null){
                         throw new NoSuchElementException("입력한 번호의 게시판이 존재하지 않습니다.");
                     }

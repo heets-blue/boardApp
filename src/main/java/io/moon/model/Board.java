@@ -34,6 +34,8 @@ public class Board {
 
     }
 
+
+
     public String getTitle() {
         return title;
     }

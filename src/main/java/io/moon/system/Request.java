@@ -25,8 +25,12 @@ public class Request {
         return urlParse.isGoodUrl();
     }
 
-    public boolean hasParams(String param) {
+    public boolean validParams(String param) {
         return getParams().containsKey(param);
+    }
+
+    public boolean noParams(){
+        return getParams().isEmpty();
     }
 
     public String getParamsValue(String paramKey) {
@@ -35,6 +39,10 @@ public class Request {
     public int paramsValueStringToInt(String param) {
         return Integer.parseInt(getParamsValue(param));
     }
+
+
+
+
 }
 
 

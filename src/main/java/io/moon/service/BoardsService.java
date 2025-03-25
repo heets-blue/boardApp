@@ -1,7 +1,6 @@
 package io.moon.service;
 
 import io.moon.model.Board;
-import io.moon.model.Post;
 import io.moon.repository.BoardRepo;
 
 public class BoardsService {
@@ -16,8 +15,8 @@ public class BoardsService {
         return boardRepo.addBoard(title, description).getID();
     }
 
-    public Board viewBoard(Integer boardID){
-        return boardRepo.getBoardById(boardID);
+    public Board getBoardByName(String boardName){
+        return boardRepo.getBoardByName(boardName);
     }
 
     public Board getBoardById(Integer boardID){

@@ -40,14 +40,19 @@ public class BoardsController {
                     break;
 
                 case "view":
-                    boolean param = request.hasParams("boardId");
+                    String requiredParms = "boardName";
+
+                    boolean param = request.hasParams(requiredParms);
                     if(!param){
                         throw new IllegalArgumentException("파라미터 입력이 잘못되었습니다.");
                     }
 
-                    Board viewingBoard = boardsService.viewBoard(request.getParams().get("boardName"));
+                    String viewingBoardName = request.getParamsValue(requiredParms);
+                    Board viewingBoard = boardsService.getBoardByName(viewingBoardName);
+
                     if (viewingBoard == null){
-                        throw new NoSuchElementException("해당 번호의 게시판이 존재하지 않습니다.");
+                        String noBoard = String.format("%s 게시판을 찾을 수 없습니다.", viewingBoardName);
+                        throw new NoSuchElementException(noBoard);
                     }
 
                     if (viewingBoard.getPosts().isEmpty()){

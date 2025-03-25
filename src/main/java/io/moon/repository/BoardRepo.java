@@ -4,6 +4,7 @@ import io.moon.model.Board;
 import io.moon.model.Post;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class BoardRepo {
     HashMap<Integer, Board> boards = new HashMap<>();
@@ -16,8 +17,19 @@ public class BoardRepo {
         return newBoard;
     }
 
+    public Board getBoardByName(String boardName){
+        for(Integer id : boards.keySet()){
+            if(boards.get(id).getTitle().equals(boardName)){
+                return boards.get(id);
+            }
+        }
+        return null;
+    }
+
     public Board getBoardById(Integer boardID){
         return boards.get(boardID);
     }
+
+
 
 }

@@ -24,10 +24,7 @@ public class Board {
 
 
     public void std() {
-        String postsInBoard =
-                """
-                글 번호 / 글 제목 / 작성일
-                """;
+        String postsInBoard = ("글 번호 / 글 제목 / 작성일");
         System.out.println(postsInBoard);
         for (Post post : posts.values()) {
             System.out.println(post.getID() + "  /  "

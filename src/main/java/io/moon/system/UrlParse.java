@@ -6,7 +6,7 @@ public class UrlParse {
     private String url;
     private String target;
     private String function;
-    private HashMap<String, Integer> params;
+    private HashMap<String, String> params;
 
     private boolean goodUrl = true;
 
@@ -50,12 +50,10 @@ public class UrlParse {
             wrongUrl();
         }
         String paraKey = paraKeyValue[0];
-        try{
-            int paraValue = Integer.parseInt(paraKeyValue[1]);
-            this.params.put(paraKey, paraValue);
-        }catch(NumberFormatException e){
-            System.out.println("파라미터 값은 숫자로 입력해주세요.");
-        }
+
+        String paraValue = paraKeyValue[1];
+
+        this.params.put(paraKey, paraValue);
     }
 
     private void wrongUrl(){
@@ -76,7 +74,7 @@ public class UrlParse {
         return function;
     }
 
-    public HashMap<String, Integer> getParams() {
+    public HashMap<String, String> getParams() {
         return params;
     }
 

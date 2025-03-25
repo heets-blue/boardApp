@@ -17,7 +17,7 @@ public class Request {
         return urlParse.getFunction();
     }
 
-    public HashMap<String, Integer> getParams() {
+    public HashMap<String, String> getParams() {
         return urlParse.getParams();
     }
 
@@ -29,8 +29,11 @@ public class Request {
         return getParams().containsKey(param);
     }
 
-    public Integer getParamsValue(String param) {
-        return getParams().get(param);
+    public String getParamsValue(String paramKey) {
+        return getParams().get(paramKey);
+    }
+    public int paramsValueStringToInt(String param) {
+        return Integer.parseInt(getParamsValue(param));
     }
 }
 

@@ -1,0 +1,23 @@
+[33mcommit 345ea2e1d2ca1d67a264edde1e0bb2bfa75812c5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Moonsung Bae <qoanstjdsla@gmail.com>
+Date:   Thu Mar 27 23:52:53 2025 +0900
+
+    2단계 boards 완셩
+
+[33mcommit a5431de8d8a084d25a75035e6f20196722042c22[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Moonsung Bae <qoanstjdsla@gmail.com>
+Date:   Wed Mar 26 01:20:42 2025 +0900
+
+    parameters type problem resolved now can response for boardName, remove, list for posts
+
+[33mcommit c9d04e6a0626758b2ba0288767de0016eeb69bc2[m
+Author: Moonsung Bae <qoanstjdsla@gmail.com>
+Date:   Tue Mar 25 23:53:38 2025 +0900
+
+    parameters type problem resolved now can response for boardName
+
+[33mcommit 097c732590468860c48d770a64a2afa8f1a5d934[m
+Author: Moonsung Bae <qoanstjdsla@gmail.com>
+Date:   Tue Mar 25 23:18:16 2025 +0900
+
+    add and view for boards, add for post 2025-03-25

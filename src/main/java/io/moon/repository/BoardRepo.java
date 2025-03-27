@@ -3,6 +3,7 @@ package io.moon.repository;
 import io.moon.model.Board;
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class BoardRepo {
     HashMap<Integer, Board> boards = new HashMap<>();
@@ -34,9 +35,9 @@ public class BoardRepo {
 
     public void viewBoard(Board board){
         String details = String.format(
-        "게시판 ID : %d\n게시판 이름 : %s\n게시판 설명 : %s\n작성일 : %s\n",
+        "게시판 ID : %d\n게시판 이름 : %s\n게시판 설명 : %s\n작성일 : %s\n수정일 : %s",
         board.getID(), board.getTitle(), board.getDescription(),
-                board.getCreatedDateTime());
+                board.getCreatedDateTime(), board.getUpdatedDateTime());
 
         System.out.println(details);
     }
@@ -51,5 +52,15 @@ public class BoardRepo {
     public void removeBoard(Board board){
         boards.remove(board.getID());
     }
+
+    public void hasPosts(Board board){
+        if (board.getPosts().isEmpty()){
+            String noPosts = String.format("""
+                                %s 게시판에는 아직 게시글이 없습니다.""",
+                    board.getTitle());
+            System.out.println(noPosts);
+        }
+    }
+
 
 }

@@ -1,13 +1,12 @@
 package io.moon.system;
 
-import io.moon.controller.BoardsController;
-import io.moon.controller.PostsController;
-import io.moon.model.Board;
-import io.moon.model.Post;
+import io.moon.controller.boards.BoardsController;
+import io.moon.controller.posts.PostsController;
 import io.moon.repository.BoardRepo;
 import io.moon.repository.PostRepo;
 import io.moon.service.BoardsService;
 import io.moon.service.PostService;
+import io.moon.system.validation.BoardsParamValidator;
 
 import java.util.Scanner;
 
@@ -22,6 +21,7 @@ public class Container {
 
     public static BoardsController boardsController;
     public static PostsController postsController;
+
     static {
         input = new Scanner(System.in);
 
@@ -32,7 +32,7 @@ public class Container {
         postService = new PostService(postRepo, boardRepo);
 
 
-        boardsController = new BoardsController(input, boardsService);
+        boardsController = new BoardsController();
         postsController = new PostsController(input, boardsService, postService);
 
     }

@@ -3,8 +3,6 @@ package io.moon.service;
 import io.moon.model.Board;
 import io.moon.repository.BoardRepo;
 
-import java.util.HashMap;
-
 public class BoardsService {
 
     BoardRepo boardRepo;
@@ -38,6 +36,10 @@ public class BoardsService {
 
     public void removeBoard(Board board){
         boardRepo.removeBoard(board);
+    }
+
+    public void hasBoard(Board board){
+        boardRepo.hasPosts(board);
     }
 
 }

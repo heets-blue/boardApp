@@ -1,4 +1,4 @@
-package io.moon.controller;
+package io.moon.controller.posts;
 
 import io.moon.model.Board;
 import io.moon.model.Post;

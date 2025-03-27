@@ -1,7 +1,5 @@
 package io.moon.system;
 
-import io.moon.controller.BoardsController;
-
 import java.util.Scanner;
 
 public class Application {

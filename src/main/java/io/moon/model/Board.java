@@ -11,8 +11,6 @@ public class Board {
     private String updatedDateTime;
     private HashMap<Integer, Post> posts;
 
-    private int boardCnt = 1;
-
     public Board(int id, String title, String description) {
         this.ID = id;
         this.title = title;
@@ -60,6 +58,15 @@ public class Board {
         return posts;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public void setUpdatedDateTime(String updatedDateTime) {
+        this.updatedDateTime = updatedDateTime;
+    }
 }

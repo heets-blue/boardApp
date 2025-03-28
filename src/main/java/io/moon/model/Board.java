@@ -7,7 +7,7 @@ public class Board {
     private int ID;
     private String title;
     private String description;
-    private String createdDateTime;
+    private final String createdDateTime;
     private String updatedDateTime;
     private HashMap<Integer, Post> posts;
 
@@ -31,8 +31,6 @@ public class Board {
         }
 
     }
-
-
 
     public String getTitle() {
         return title;

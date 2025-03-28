@@ -1,5 +1,7 @@
 package io.moon.system.validation;
 
+import io.moon.model.Board;
+import io.moon.model.Post;
 import io.moon.repository.BoardRepo;
 import io.moon.service.BoardsService;
 import io.moon.system.Container;
@@ -8,12 +10,12 @@ import io.moon.system.Request;
 import java.util.NoSuchElementException;
 
 
-public class BoardsParamValidator {
+public class ParamValidator {
     private final Request request;
     private final BoardsService boardsService = Container.boardsService;
     private final BoardRepo boardRepo = Container.boardRepo;
 
-    public BoardsParamValidator(Request request) {
+    public ParamValidator(Request request) {
         this.request = request;
     }
 
@@ -31,8 +33,8 @@ public class BoardsParamValidator {
         }
     }
 
-    public void badParamValue(Object obj, Integer ID){
-        if (obj == null){
+    public void badParamValue(Board board, Integer ID){
+        if (board == null){
             String errorMsg = String.format("%d번 게시판이 존재 하지 않습니다.", ID);
             throw new NoSuchElementException(errorMsg);
         }
@@ -41,6 +43,13 @@ public class BoardsParamValidator {
     public void badParamValue(Object obj, String Name){
         if (obj == null){
             String errorMsg = String.format("%s 게시판이 존재 하지 않습니다.", Name);
+            throw new NoSuchElementException(errorMsg);
+        }
+    }
+
+    public void badParamValue(Post post, Integer ID){
+        if (post == null){
+            String errorMsg = String.format("%d번 게시글이 존재 하지 않습니다.", ID);
             throw new NoSuchElementException(errorMsg);
         }
     }

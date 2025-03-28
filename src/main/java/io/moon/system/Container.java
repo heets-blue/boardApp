@@ -6,7 +6,6 @@ import io.moon.repository.BoardRepo;
 import io.moon.repository.PostRepo;
 import io.moon.service.BoardsService;
 import io.moon.service.PostService;
-import io.moon.system.validation.BoardsParamValidator;
 
 import java.util.Scanner;
 
@@ -33,7 +32,7 @@ public class Container {
 
 
         boardsController = new BoardsController();
-        postsController = new PostsController(input, boardsService, postService);
+        postsController = new PostsController();
 
     }
 }

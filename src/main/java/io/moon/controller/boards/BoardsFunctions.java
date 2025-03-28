@@ -4,7 +4,7 @@ import io.moon.model.Board;
 import io.moon.service.BoardsService;
 import io.moon.system.Container;
 import io.moon.system.Request;
-import io.moon.system.validation.BoardsParamValidator;
+import io.moon.system.validation.ParamValidator;
 
 import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
@@ -13,12 +13,12 @@ import java.util.Scanner;
 public class BoardsFunctions {
     private final Scanner input = new Scanner(System.in);
     private final BoardsService boardsService = Container.boardsService;
-    private final BoardsParamValidator validator;
+    private final ParamValidator validator;
     private final Request request;
 
     public BoardsFunctions(Request request) {
         this.request = request;
-        this.validator = new BoardsParamValidator(request);
+        this.validator = new ParamValidator(request);
     }
 
     public void addBoards(){
@@ -33,7 +33,7 @@ public class BoardsFunctions {
         System.out.printf("%d번 게시판이 성공적으로 생성되었습니다.\n", newBoardId);
     }
 
-    public void editBaords(String paramKey){
+    public void editBoards(String paramKey){
         validator.badPramKey(paramKey);
 
         Integer editBoardId = request.paramsValueStringToInt(paramKey);
@@ -84,9 +84,9 @@ public class BoardsFunctions {
 
         validator.badParamValue(viewBoard,viewBoardName);
 
-        boardsService.hasBoard(viewBoard);
+        boardsService.hasPosts(viewBoard);
 
-        System.out.print("게시판 정보를 조회하시겠습니까? [Y/N] : ");
+        System.out.print("게시판 정보도 함께 조회하시겠습니까? [Y/N] : ");
         String viewTheBoard = input.nextLine().trim();
         if(viewTheBoard.equalsIgnoreCase("y")) {
             boardsService.viewBoard(viewBoard);

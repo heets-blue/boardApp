@@ -14,7 +14,7 @@ public class BoardsController {
 
             case "edit":
                 String paramForEdit = "boardId";
-                functions.editBaords(paramForEdit);
+                functions.editBoards(paramForEdit);
                 break;
 
             case "remove":
@@ -34,7 +34,5 @@ public class BoardsController {
             default:
                 System.out.println("존재하지 않는 명령어입니다.");
             }
-
-
     }
 }

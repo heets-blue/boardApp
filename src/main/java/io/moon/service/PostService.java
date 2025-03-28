@@ -14,12 +14,20 @@ public class PostService {
         this.boardRepo = boardRepo;
     }
 
-    public Post addPost(String title, String body){
-        return postRepo.addPost(title, body);
+    public Post getPostById(Integer postId) {
+        return postRepo.getPostById(postId);
     }
 
-    public void putPostInBoard(Board board, Post post){
-        postRepo.putPostInBoard(board, post);
+    public Post addPost(String title, String body, Board board){
+        return postRepo.addPost(title, body, board);
+    }
+
+    public void removePost(Post post,int postId) {
+        postRepo.removePost(post ,postId);
+    }
+
+    public int findBoardId(Post post){
+        return postRepo.findBoardId(post);
     }
 
 }

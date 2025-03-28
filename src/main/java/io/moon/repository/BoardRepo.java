@@ -35,7 +35,7 @@ public class BoardRepo {
 
     public void viewBoard(Board board){
         String details = String.format(
-        "게시판 ID : %d\n게시판 이름 : %s\n게시판 설명 : %s\n작성일 : %s\n수정일 : %s",
+        "\n게시판 ID : %d\n게시판 이름 : %s\n게시판 설명 : %s\n작성일 : %s\n수정일 : %s\n",
         board.getID(), board.getTitle(), board.getDescription(),
                 board.getCreatedDateTime(), board.getUpdatedDateTime());
 
@@ -58,7 +58,7 @@ public class BoardRepo {
             String noPosts = String.format("""
                                 %s 게시판에는 아직 게시글이 없습니다.""",
                     board.getTitle());
-            System.out.println(noPosts);
+            throw new NoSuchElementException(noPosts);
         }
     }
 

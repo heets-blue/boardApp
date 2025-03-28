@@ -38,7 +38,7 @@ public class BoardsService {
         boardRepo.removeBoard(board);
     }
 
-    public void hasBoard(Board board){
+    public void hasPosts(Board board){
         boardRepo.hasPosts(board);
     }
 

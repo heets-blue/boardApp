@@ -6,7 +6,7 @@ import io.moon.service.BoardsService;
 import io.moon.service.PostService;
 import io.moon.system.Container;
 import io.moon.system.Request;
-import io.moon.system.validation.ParamValidator;
+import io.moon.system.ParamValidator;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;

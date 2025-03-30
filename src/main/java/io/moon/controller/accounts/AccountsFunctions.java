@@ -57,6 +57,46 @@ public class AccountsFunctions {
         System.out.println("로그아웃 되었습니다.");
     }
 
-    //TODO
-    private void wrongPassword(String ID, String password) {}
+    public void detail(String paramKey){
+        validator.badPramKey(paramKey);
+        String ID = request.getParamsValue(paramKey);
+
+        accountsService.detail(ID);
+    }
+
+    public void edit(String paramKey){
+        validator.badPramKey(paramKey);
+
+        String accountId = request.getParamsValue(paramKey);
+
+        accountsService.hasAccount(accountId);
+
+        try{
+            System.out.print("현재 비밀번호 : ");
+            String presentPassword = input.nextLine().trim();
+            accountsService.passwordCheck(accountId, presentPassword);
+
+            System.out.print("새 비밀번호: ");
+            String newPassword = input.nextLine().trim();
+            System.out.print("새 비밀번호 재확인");
+            String confirmPassword = input.nextLine().trim();
+
+            if(!newPassword.equals(confirmPassword)){
+                throw new IllegalAccessException("새 비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해 주세요.");
+            }
+
+            accountsService.changePassword(accountId,newPassword);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void remove(String paramKey){
+        validator.badPramKey(paramKey);
+        String ID = request.getParamsValue(paramKey);
+        accountsService.removeAccount(ID, request);
+    }
+
 }

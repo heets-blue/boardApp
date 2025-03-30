@@ -1,5 +1,6 @@
 package io.moon.system;
 
+import io.moon.model.Account;
 import io.moon.model.Board;
 import io.moon.model.Post;
 import io.moon.repository.BoardRepo;
@@ -51,4 +52,5 @@ public class ParamValidator {
             throw new NoSuchElementException(errorMsg);
         }
     }
+
 }

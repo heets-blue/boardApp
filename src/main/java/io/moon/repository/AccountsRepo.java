@@ -16,25 +16,22 @@ public class AccountsRepo { ;
         return account;
     }
 
-    public boolean login(String ID, String password) {
+    public boolean passwordCheck(String ID, String password) {
         Account account = getAccountById(ID);
-        if (account.getPassword().equals(password)) {
-            return true;
-        }
-        return false;
+        return account.getPassword().equals(password);
     }
 
     public Account getAccountById(String ID) {
         return accounts.get(ID);
     }
 
-    public Account getAccountByNickname(String nickname) {
-        for(Account account : accounts.values()) {
-            if(account.getNickname().equals(nickname)) {
-                return account;
-            }
-        }
-        return null;
+
+    public void changePassword(Account account, String newPassword){
+        account.setPassword(newPassword);
+    }
+
+    public void removeAccount(String ID){
+        accounts.remove(ID);
     }
 
 }

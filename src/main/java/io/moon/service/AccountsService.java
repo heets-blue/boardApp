@@ -26,7 +26,7 @@ public class AccountsService {
         request.logIn(ID);
 
         hasAccount(ID);
-        wrongPassword(ID, password);
+        passwordCheck(ID, password);
     }
 
     public void logout(Request request) {
@@ -36,14 +36,16 @@ public class AccountsService {
         request.logOut();
     }
 
-    public void hasAccount(String ID){
-        if(accountsRepo.getAccountById(ID) == null){
+    public Account hasAccount(String ID){
+        Account findAccount = accountsRepo.getAccountById(ID);
+        if(findAccount == null){
             throw new NoSuchElementException("해당 ID의 계정을 찾을 수 없습니다.");
         }
+        return findAccount;
     }
 
-    public void wrongPassword(String ID, String password){
-        if(!accountsRepo.login(ID, password)){
+    public void passwordCheck(String ID, String password){
+        if(!accountsRepo.passwordCheck(ID, password)){
             throw new NoSuchElementException("비밀번호가 일치하지 않습니다.");
         }
     }
@@ -53,5 +55,24 @@ public class AccountsService {
             throw new RuntimeException("이미 로그인 되어있습니다.");
         }
     }
+
+    public void detail(String accountId){
+        Account account = hasAccount(accountId);
+        System.out.println(account);
+    }
+
+    public void changePassword(String accountId, String newPassword){
+        Account targetAccount = hasAccount(accountId);
+        accountsRepo.changePassword(targetAccount, newPassword);
+        System.out.println("비밀번호가 변경 되었습니다!");
+    }
+
+    public void removeAccount(String accountId, Request request){
+        hasAccount(accountId);
+        request.logOut();
+        accountsRepo.removeAccount(accountId);
+        System.out.printf("%s계정이 삭제 되었습니다.\n", accountId);
+    }
+
 
 }

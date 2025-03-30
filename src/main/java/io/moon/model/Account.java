@@ -1,14 +1,13 @@
 package io.moon.model;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public class Account {
     private String ID;
     private String password;
     private String nickname;
-
-    private String name;
-    private String email;
+    private final String created_at;
 
     private HashMap<Integer, Post> posts;
 
@@ -16,6 +15,7 @@ public class Account {
         this.ID = ID;
         this.password = password;
         this.nickname = nickname;
+        this.created_at = LocalDateTime.now().toString();
     }
 
     public String getID() {
@@ -34,22 +34,6 @@ public class Account {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public HashMap<Integer, Post> getPosts() {
         return posts;
     }
@@ -64,5 +48,16 @@ public class Account {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    @Override
+    public String toString() {
+        String accountDetail = String.format("""
+                [회원 정보]
+                ID: %s
+                password: %s
+                nickname: %s
+                created_at: %s""", ID, password, nickname, created_at);
+        return accountDetail;
     }
 }

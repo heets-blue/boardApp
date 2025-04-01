@@ -29,6 +29,12 @@ public class Application {
                 UrlParse urlParse = new UrlParse(url);
                 urlParse.parse(url);
                 Request request = new Request(urlParse);
+                Filter filter = new Filter(request);
+
+                if(!filter.isValidAuth()){
+                    System.out.println("해당 서비스에 접근할 권한이 없습니다.");
+                    continue;
+                }
 
                 switch (request.getTarget()){
                     case "boards":

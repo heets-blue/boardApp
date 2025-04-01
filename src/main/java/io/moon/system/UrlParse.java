@@ -61,6 +61,10 @@ public class UrlParse {
         throw new IllegalArgumentException("잘못 된 URL입니다.");
     }
 
+    public String getEndPoint(){
+        String[] splitUrl = url.split("\\?");
+        return splitUrl[0];
+    }
 
     public String getUrl() {
         return url;

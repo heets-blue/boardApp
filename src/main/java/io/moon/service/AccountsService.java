@@ -23,10 +23,9 @@ public class AccountsService {
     }
 
     public void login(Request request, String ID, String password) {
-        request.logIn(ID);
-
         hasAccount(ID);
         passwordCheck(ID, password);
+        request.logIn(ID);
     }
 
     public void logout(Request request) {

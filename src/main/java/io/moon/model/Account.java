@@ -9,12 +9,14 @@ public class Account {
     private String nickname;
     private final String created_at;
 
+    private final AuthType authType;
     private HashMap<Integer, Post> posts;
 
-    public Account(String ID, String password, String nickname) {
+    public Account(String ID, String password, String nickname, AuthType authType) {
         this.ID = ID;
         this.password = password;
         this.nickname = nickname;
+        this.authType = authType;
         this.created_at = LocalDateTime.now().toString();
     }
 
@@ -60,4 +62,10 @@ public class Account {
                 created_at: %s""", ID, password, nickname, created_at);
         return accountDetail;
     }
+
+    public AuthType getAuthType() {
+        return authType;
+    }
+
+
 }

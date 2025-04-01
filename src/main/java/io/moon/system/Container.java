@@ -1,5 +1,6 @@
 package io.moon.system;
 
+import io.moon.config.DataConstructor;
 import io.moon.controller.accounts.AccountsController;
 import io.moon.controller.boards.BoardsController;
 import io.moon.controller.posts.PostsController;
@@ -29,6 +30,8 @@ public class Container {
     public static PostsController postsController;
     public static AccountsController accountsController;
 
+    public static DataConstructor dataConstructor;
+
     static {
         input = new Scanner(System.in);
 
@@ -46,5 +49,6 @@ public class Container {
         postsController = new PostsController();
         accountsController = new AccountsController();
 
+        dataConstructor = new DataConstructor(boardRepo, accountsRepo);
     }
 }

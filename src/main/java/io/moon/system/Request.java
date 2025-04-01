@@ -5,6 +5,8 @@ import java.util.HashMap;
 public class Request {
     private UrlParse urlParse;
     private final String AUTH_STATUS_KEY_NAME = "login_status";
+    private final Session session = Container.session;
+
 
     public Request(UrlParse urlParse) {
         this.urlParse = urlParse;
@@ -42,12 +44,10 @@ public class Request {
     }
 
     public void setSessionAttribute(String key, String value) {
-        Session session = Container.session;
         session.setAttribute(key, value);
     }
 
     public void removeSessionAttribute(String key) {
-        Session session = Container.session;
         session.removeAttribute(key);
     }
 
@@ -60,8 +60,15 @@ public class Request {
     }
 
     public boolean isLoggedIn() {
-        Session session = Container.session;
         return session.hasAttribute(AUTH_STATUS_KEY_NAME);
+    }
+
+    public String getEndPoint() {
+        return urlParse.getEndPoint();
+    }
+
+    public String getLoginedAccountId() {
+        return (String) session.getAttribute(AUTH_STATUS_KEY_NAME);
     }
 
 }
